@@ -1,21 +1,28 @@
-import React from 'react'
-import { useSelector } from 'react-redux'
-import { useNavigate } from 'react-router-dom';
+// import React from 'react'
+// import { useSelector } from 'react-redux'
+// import { useNavigate } from 'react-router-dom';
 
-const CheckLogin = (props) => {
+// const CheckLogin = (props) => {
 
-    const user = useSelector((store) => store.user);
-    const navigate = useNavigate();
+//     const user = useSelector((store) => store.user);
+//     const navigate = useNavigate();
     
-    const handleNavigate = () => {
-        navigate("/");
-    }
+//     const handleNavigate = () => {
+//         navigate("/");
+//     }
   
-  return (
-    <div>
-        if(user.emailId === "") {handleNavigate}
-    </div>
-  )
-}
+//     if(user.emailId === ""){
+//         return(
+//             <div>
+//                 {navigate()};
+//             </div>
+//         )
+//     }
+//   return (
+//     <div>
+        
+//     </div>
+//   )
+// }
 
-export default CheckLogin;
+// export default CheckLogin;

@@ -8,9 +8,12 @@ const userSlice = createSlice(
             password: ""
         },
         reducers: {
-            addUser: (state, action) => {
-                state.emailId = action.payload.emailId;
-                state.password = action.payload.password;
+            addUserEmail: (state, action) => {
+                state.emailId = action.payload;
+                state.password = action.payload;
+            },
+            addUserPassword: (state, action) => {
+                state.password = action.payload;
             },
             removeUser: (state) => {
                 state.emailId = "";
@@ -20,6 +23,6 @@ const userSlice = createSlice(
     }
 )
 
-export const {addUser, removeUser} = userSlice.actions;
+export const {addUserEmail, addUserPassword, removeUser} = userSlice.actions;
 
 export default userSlice.reducer;

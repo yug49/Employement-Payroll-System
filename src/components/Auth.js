@@ -5,6 +5,8 @@ import { auth } from '../utils/firebase';
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { useNavigate } from 'react-router-dom';
 import AuthHeader from './AuthHeader';
+import { useDispatch } from 'react-redux';
+import { addUser, addUserEmail, addUserPassword } from '../utils/userSlice';
   
 
 const Auth = () => {
@@ -14,7 +16,7 @@ const Auth = () => {
   const [employeeLogin, setEmployeeLogin] = useState(true);
   const [signInValidity, setSignInValidity] = useState("");
   const navigate = useNavigate();
-
+  const dispatch = useDispatch();
   
   
   const handleClientSignIn = () => {
@@ -27,9 +29,10 @@ const Auth = () => {
       // Signed in 
       const user = userCredential.user
       
-      console.log("logged in")
-      console.log(user);
+      dispatch(addUserEmail(email?.current?.value));
+      dispatch(addUserPassword(email?.current?.value));
       navigate("/Client");
+      
       // ...
     })
     .catch((error) => {

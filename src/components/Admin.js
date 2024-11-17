@@ -6,11 +6,8 @@ import AddEmployee from './AddEmployee.js';
 import ManageSalary from './ManageSalary.js';
 import RemoveEmployee from './RemoveEmployee.js';
 import Header from './Header.js';
-import CheckAdmin from './CheckAdmin.js';
 
 const Admin = () => {
-
-    CheckAdmin();
 
     const [manageSalary, setManageSalary] = useState(false);
     const [manageLeaves, setManageLeaves] = useState(false);

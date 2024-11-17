@@ -1,22 +1,22 @@
-import React from 'react'
-import { useSelector } from 'react-redux'
-import { useNavigate } from 'react-router-dom';
+// import React from 'react'
+// import { useSelector } from 'react-redux'
+// import { useNavigate } from 'react-router-dom';
 
-const CheckAdmin = () => {
+// const CheckAdmin = () => {
   
-    const user = useSelector((store) => store.user);
-    const navigate = useNavigate();
+//     const user = useSelector((store) => store.user);
+//     const navigate = useNavigate();
     
 
-    if(user.emailId != "admin@company.com"){
-        navigate("/sign-in");
-    }
+//     if(user.emailId != "admin@company.com"){
+//         navigate("/sign-in");
+//     }
   
-  return (
-    <div>
+//   return (
+//     <div>
         
-    </div>
-  )
-}
+//     </div>
+//   )
+// }
 
-export default CheckAdmin;
+// export default CheckAdmin;

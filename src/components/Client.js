@@ -4,10 +4,10 @@ import RequestLeave from './RequestLeave';
 import Header from './Header';
 import GeneratePayslip from './GeneratePayslip';
 import CheckLogin from './CheckLogin';
+import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 const Client = () => {
-
-    CheckLogin();
 
     const [generatePaySlip, setGeneratePaySlip] = useState(false);
     const [requestLeave, setRequestLeave] = useState(false);

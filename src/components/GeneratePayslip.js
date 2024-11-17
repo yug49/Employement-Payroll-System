@@ -6,7 +6,6 @@ import { useSelector } from 'react-redux'
 import Client from './Client'
 
 const GeneratePayslip = () => {
-    const navigate = useNavigate();
     const paySlip = useSelector((store) => store.paySlip);
     const [back , setBack] = useState(false);
     
