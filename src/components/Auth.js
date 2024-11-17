@@ -6,7 +6,7 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import { useNavigate } from 'react-router-dom';
 import AuthHeader from './AuthHeader';
 import { useDispatch } from 'react-redux';
-import { addUser, addUserEmail, addUserPassword } from '../utils/userSlice';
+import { addUserEmail, addUserPassword } from '../utils/userSlice';
   
 
 const Auth = () => {
@@ -20,9 +20,6 @@ const Auth = () => {
   
   
   const handleClientSignIn = () => {
-    const message = ValiditeSignIn(email?.current?.value, password?.current?.value);
-    setSignInValidity(message);
-    if(message) return;
 
     signInWithEmailAndPassword(auth, email?.current?.value, password?.current?.value)
     .then((userCredential) => {
@@ -38,13 +35,11 @@ const Auth = () => {
     .catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
+      setSignInValidity("Email ID or Password Invalid!");
     });
   }
 
   const handleAdminSignIn = () => {
-    const message = ValiditeSignIn(email?.current?.value, password?.current?.value);
-    setSignInValidity(message);
-    if(message) return;
 
     signInWithEmailAndPassword(auth, email?.current?.value, password?.current?.value)
     .then((userCredential) => {
@@ -59,6 +54,7 @@ const Auth = () => {
     .catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
+      setSignInValidity("Email ID or Password Invalid!");
     });
   }
 

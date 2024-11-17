@@ -1,31 +1,28 @@
 import React, { useRef, useState } from 'react'
-import { Selector, useDispatch, useSelector } from 'react-redux'
-import { UseDispatch } from 'react-redux'
-import { addEmployee, removeEmployee } from '../utils/clientSlice'
 import { AUTH_BAGROUND_URL } from '../utils/constants'
 import { auth } from '../utils/firebase'
 import { createUserWithEmailAndPassword } from 'firebase/auth'
 import Header from './Header.js';
-import Admin from './Admin.js'
+import { ValiditeSignIn } from '../utils/ValidateFormat.js';
 
 
 const AddEmployee = () => {
 
-    const dispatch = useDispatch();
-    const employees = useSelector((store) => store.client.employees);
     const empEmail = useRef(null);
     const empPassword = useRef(null);
+    const [signUpValid, setSignUpValid] = useState("");
 
     const handleAddEmployee = () => {
-        
-        // console.log(employee);
-        // dispatch(addEmployee(employee));
+        const message = ValiditeSignIn(empEmail?.current?.value, empPassword?.current?.value);
+        if(message){
+            setSignUpValid(message);
+            return;
+        }
 
         createUserWithEmailAndPassword(auth, empEmail?.current?.value, empPassword?.current?.value)
             .then((userCredential) => {
             // Signed up 
             const user = userCredential.user;
-            console.log("user added");
             // ...
         })
         .catch((error) => {
@@ -54,6 +51,7 @@ const AddEmployee = () => {
               
               <input ref={empEmail} type='text' placeholder='New Employee Email' className='w-8/12 mx-20 mb-3 p-3  rounded-2xl border-gray-800 border'/>
               <input ref={empPassword} type='text' placeholder='Set a Password' className='w-8/12 mx-20  p-3 mt-3 rounded-2xl border-gray-800 border' />
+              <div className='text-red-700 mx-20 mt-7 mb-7 font-semibold'>{signUpValid}</div>
              
               <button onClick={handleAddEmployee} className='p-3 bg-blue-500 text-white w-8/12 mx-20 font-semibold rounded-2xl mt-11'>Add Employee</button>
               </form>
