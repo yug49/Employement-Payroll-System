@@ -3,7 +3,7 @@ import clientReducer from "./clientSlice"
 import paySlipReducer from "./paySlipSlice"
 import adminReducer from "./adminSlice"
 import leaveReducer from "./leaveSlice"
-import { addUser, removeUser } from "./clientSlice";
+import userReducer from "./userSlice"
 
 const appStore = configureStore(
     {
@@ -11,7 +11,8 @@ const appStore = configureStore(
             client : clientReducer,
             admin : adminReducer,
             paySlip : paySlipReducer,
-            leaves : leaveReducer
+            leaves : leaveReducer,
+            user : userReducer,
         },
     }
 )

@@ -11,11 +11,11 @@ const Auth = () => {
 
   const email = useRef(null);
   const password = useRef(null);
-
-
   const [employeeLogin, setEmployeeLogin] = useState(true);
   const [signInValidity, setSignInValidity] = useState("");
   const navigate = useNavigate();
+
+  
   
   const handleClientSignIn = () => {
     const message = ValiditeSignIn(email?.current?.value, password?.current?.value);

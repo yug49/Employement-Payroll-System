@@ -3,8 +3,11 @@ import { AUTH_BAGROUND_URL, LOGIN_LOGO } from '../utils/constants'
 import RequestLeave from './RequestLeave';
 import Header from './Header';
 import GeneratePayslip from './GeneratePayslip';
+import CheckLogin from './CheckLogin';
 
 const Client = () => {
+
+    CheckLogin();
 
     const [generatePaySlip, setGeneratePaySlip] = useState(false);
     const [requestLeave, setRequestLeave] = useState(false);
