@@ -3,7 +3,8 @@ import { ValiditeSignIn } from '../utils/ValidateFormat';
 import { AUTH_BAGROUND_URL, LOGIN_LOGO } from '../utils/constants'
 import { auth } from '../utils/firebase';
 import { signInWithEmailAndPassword } from "firebase/auth";
-
+import { useNavigate } from 'react-router-dom';
+import AuthHeader from './AuthHeader';
   
 
 const Auth = () => {
@@ -14,8 +15,9 @@ const Auth = () => {
 
   const [employeeLogin, setEmployeeLogin] = useState(true);
   const [signInValidity, setSignInValidity] = useState("");
+  const navigate = useNavigate();
   
-  const handleSignIn = () => {
+  const handleClientSignIn = () => {
     const message = ValiditeSignIn(email?.current?.value, password?.current?.value);
     setSignInValidity(message);
     if(message) return;
@@ -23,9 +25,33 @@ const Auth = () => {
     signInWithEmailAndPassword(auth, email?.current?.value, password?.current?.value)
     .then((userCredential) => {
       // Signed in 
-      const user = userCredential.user;
+      const user = userCredential.user
+      
       console.log("logged in")
       console.log(user);
+      navigate("/Client");
+      // ...
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+    });
+  }
+
+  const handleAdminSignIn = () => {
+    const message = ValiditeSignIn(email?.current?.value, password?.current?.value);
+    setSignInValidity(message);
+    if(message) return;
+
+    signInWithEmailAndPassword(auth, email?.current?.value, password?.current?.value)
+    .then((userCredential) => {
+      // Signed in 
+      const user = userCredential.user
+      
+      console.log("logged in")
+      console.log(user);
+
+      navigate("/Admin");
       // ...
     })
     .catch((error) => {
@@ -38,6 +64,9 @@ const Auth = () => {
   if(employeeLogin){
     return (
       <div>
+        <div>
+          <AuthHeader />
+        </div>
           <div className='absolute'>
               <img src={AUTH_BAGROUND_URL} alt='bg image' className='w-screen h-screen'/>
           </div>
@@ -56,7 +85,7 @@ const Auth = () => {
                 setEmployeeLogin(!employeeLogin);
               }}>
                 Admin Login</p></div>
-              <button onClick={handleSignIn} className='p-3 bg-blue-500 text-white w-8/12 mx-20 font-semibold rounded-2xl mt-11'>Sign In</button>
+              <button onClick={handleClientSignIn} className='p-3 bg-blue-500 text-white w-8/12 mx-20 font-semibold rounded-2xl mt-11'>Sign In</button>
               </form>
           </div>
       </div>
@@ -65,6 +94,9 @@ const Auth = () => {
   else{
     return (
       <div>
+        <div>
+          <AuthHeader />
+        </div>
           <div className='absolute'>
               <img src={AUTH_BAGROUND_URL} alt='bg image' className='w-screen h-screen'/>
           </div>
@@ -83,7 +115,7 @@ const Auth = () => {
                 setEmployeeLogin(!employeeLogin);
               }}>
                 Employee Login</p></div>
-              <button onClick={handleSignIn} className='p-3 bg-blue-500 text-white w-8/12 mx-20 font-semibold rounded-2xl mt-11'>Sign In</button>
+              <button onClick={handleAdminSignIn} className='p-3 bg-blue-500 text-white w-8/12 mx-20 font-semibold rounded-2xl mt-11'>Sign In</button>
               </form>
           </div>
       </div>
