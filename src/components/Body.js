@@ -5,6 +5,8 @@ import { createBrowserRouter, RouterProvider, Outlet, useNavigate } from "react-
 import Admin from './Admin';
 import Client from './Client';
 import { useSelector } from 'react-redux';
+import NotEmployee from './NotEmployee';
+import NotAdmin from './NotAdmin';
 
 
 const Body = () => {
@@ -34,6 +36,27 @@ const Body = () => {
   
     ])
   }
+  else if(user.emailId === "admin@company.com"){
+    appRouter = createBrowserRouter([
+      {
+        path: "/",
+        element: <Auth />,
+      },
+      {
+        path: "/sign-in",
+        element: <Auth />
+      },
+      {
+        path: "/Client",
+        element: <NotEmployee />
+      },  
+      {
+        path: "/Admin",
+        element: <Admin />
+      },  
+  
+    ])
+  }
   else{
     appRouter = createBrowserRouter([
       {
@@ -50,7 +73,7 @@ const Body = () => {
       },  
       {
         path: "/Admin",
-        element: <Admin />
+        element: <NotAdmin />
       },  
   
     ])

@@ -30,7 +30,7 @@ const Auth = () => {
       const user = userCredential.user
       
       dispatch(addUserEmail(email?.current?.value));
-      dispatch(addUserPassword(email?.current?.value));
+      dispatch(addUserPassword(password?.current?.value));
       navigate("/Client");
       
       // ...
@@ -51,9 +51,8 @@ const Auth = () => {
       // Signed in 
       const user = userCredential.user
       
-      console.log("logged in")
-      console.log(user);
-
+      dispatch(addUserEmail(email?.current?.value));
+      dispatch(addUserPassword(password?.current?.value));
       navigate("/Admin");
       // ...
     })
