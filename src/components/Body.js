@@ -7,6 +7,7 @@ import Client from './Client';
 import { useSelector } from 'react-redux';
 import NotEmployee from './NotEmployee';
 import NotAdmin from './NotAdmin';
+import { adminList } from '../utils/adminList';
 
 
 const Body = () => {
@@ -14,6 +15,10 @@ const Body = () => {
   const user = useSelector((store) => store.user);
 
   let appRouter = null;
+
+  const checkAdmin = (email) => {
+    
+  }
 
   if(user.emailId === ""){
     appRouter = createBrowserRouter([
@@ -36,7 +41,7 @@ const Body = () => {
   
     ])
   }
-  else if(user.emailId === "admin@company.com"){
+  else if(adminList.includes(user.emailId)){
     appRouter = createBrowserRouter([
       {
         path: "/",

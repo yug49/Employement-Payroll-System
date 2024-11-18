@@ -4,6 +4,7 @@ import paySlipReducer from "./paySlipSlice"
 import adminReducer from "./adminSlice"
 import leaveReducer from "./leaveSlice"
 import userReducer from "./userSlice"
+import salaryReducer from "./salarySlice";
 
 const appStore = configureStore(
     {
@@ -13,6 +14,7 @@ const appStore = configureStore(
             paySlip : paySlipReducer,
             leaves : leaveReducer,
             user : userReducer,
+            salary: salaryReducer,
         },
     }
 )

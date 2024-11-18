@@ -4,7 +4,7 @@ const paySlipSlice = createSlice(
     {
         name: "paySlips",
         initialState: {
-            tax : 0,
+            tax : 18,
             overTime : 100,
             underTime : 200,
         },
