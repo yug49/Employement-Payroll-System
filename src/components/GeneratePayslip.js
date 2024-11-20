@@ -8,6 +8,9 @@ import Client from './Client'
 const GeneratePayslip = () => {
     const paySlip = useSelector((store) => store.paySlip);
     const [back , setBack] = useState(false);
+    const salary = useSelector((store) => store.salary);
+    const employee = useSelector((store) => store.user)
+    const [index, setIndex] = useState(null);
     
     const handleBack = () => {
         setBack(true);
@@ -17,6 +20,8 @@ const GeneratePayslip = () => {
             <Client />
         )
     }
+
+    
   return (
     <div>
         <div>
@@ -28,7 +33,7 @@ const GeneratePayslip = () => {
           </div>
           <div className='absolute mt-48 mx-auto right-0 left-0 bg-white border border-gray-400 rounded-3xl w-3/12 h-4/6'>
           <h1 className='text-black mx-20 text-4xl mt-3  text-center font-bold'>Generated Payslip</h1>
-          <h1 className='text-black mx-20 text-2xl mt-3  text-center font-bold'>Salary: Rs.10000</h1>
+          <h1 className='text-black mx-20 text-2xl mt-3  text-center font-bold'>Salary: Rs. 10000</h1>
           <h1 className='text-black mx-20 text-2xl mt-3  text-center font-bold'>Tax: {paySlip.tax}</h1>
           <h1 className='text-black mx-20 text-2xl mt-3  text-center font-bold'>Overtime: 5hr * {paySlip.overTime} = Rs. {5*paySlip.overTime}</h1>
           <h1 className='text-black mx-20 text-2xl mt-3  text-center font-bold'>UnderTime: 3hr * {paySlip.underTime} = -Rs. {3*paySlip.underTime}</h1>

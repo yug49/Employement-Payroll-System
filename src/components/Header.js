@@ -24,7 +24,6 @@ const Header = () => {
         <div>
 
         <ul className="flex self-center mr-64">
-        {/* <Link className="headerLink" to="/sign-in"><li className="cursor-pointer mr-10 text-xl px-4 py-2 text-center border-2 rounded-3xl mt-4 border-black border-solid bg-white">Log Out</li></Link> */}
         <button className="cursor-pointer mr-10 text-xl px-4 py-2 text-center border-2 rounded-3xl mt-4 border-white text-white border-solid bg-transparent" onClick={handleLogOut}>Log Out</button>
         </ul>
         </div>

@@ -1,5 +1,4 @@
 import React, { useRef, useState } from 'react';
-import { ValiditeSignIn } from '../utils/ValidateFormat';
 import { AUTH_BAGROUND_URL, LOGIN_LOGO } from '../utils/constants'
 import { auth } from '../utils/firebase';
 import { signInWithEmailAndPassword } from "firebase/auth";
@@ -7,7 +6,6 @@ import { useNavigate } from 'react-router-dom';
 import AuthHeader from './AuthHeader';
 import { useDispatch } from 'react-redux';
 import { addUserEmail, addUserPassword } from '../utils/userSlice';
-  
 
 const Auth = () => {
 
@@ -29,7 +27,6 @@ const Auth = () => {
       dispatch(addUserEmail(email?.current?.value));
       dispatch(addUserPassword(password?.current?.value));
       navigate("/Client");
-      
       // ...
     })
     .catch((error) => {

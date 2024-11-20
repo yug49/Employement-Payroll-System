@@ -1,7 +1,6 @@
 import React from 'react'
 import Auth from './Auth';
-import ReactDOM from 'react-dom/client';
-import { createBrowserRouter, RouterProvider, Outlet, useNavigate } from "react-router-dom";
+import { createBrowserRouter, RouterProvider} from "react-router-dom";
 import Admin from './Admin';
 import Client from './Client';
 import { useSelector } from 'react-redux';
@@ -15,10 +14,6 @@ const Body = () => {
   const user = useSelector((store) => store.user);
 
   let appRouter = null;
-
-  const checkAdmin = (email) => {
-    
-  }
 
   if(user.emailId === ""){
     appRouter = createBrowserRouter([
